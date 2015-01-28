@@ -25,6 +25,8 @@ import com.mysema.query.types.template.BooleanTemplate;
 
 public class AuthorizationGod implements PermissionChecker, AuthorizationQdslUtil {
 
+    private static final int DEFAULT_SYSTEM_RESOURCE_ID = -1;
+
     @Override
     public BooleanExpression authorizationPredicate(final long authorizedResourceId,
             final Expression<Long> targetResourceId, final String... actions) {
@@ -33,12 +35,12 @@ public class AuthorizationGod implements PermissionChecker, AuthorizationQdslUti
 
     @Override
     public long[] getAuthorizationScope(final long authorizedResourceId) {
-        throw new UnsupportedOperationException();
+        return new long[] { DEFAULT_SYSTEM_RESOURCE_ID };
     }
 
     @Override
     public long getSystemResourceId() {
-        throw new UnsupportedOperationException();
+        return DEFAULT_SYSTEM_RESOURCE_ID;
     }
 
     @Override

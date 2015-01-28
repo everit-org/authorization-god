@@ -24,7 +24,6 @@ import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.Service;
 import org.everit.osgi.authorization.PermissionChecker;
 import org.everit.osgi.authorization.ri.schema.qdsl.util.AuthorizationQdslUtil;
-import org.everit.osgi.dev.testrunner.TestDuringDevelopment;
 import org.everit.osgi.dev.testrunner.TestRunnerConstants;
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,7 +38,6 @@ import com.mysema.query.types.template.BooleanTemplate;
         @Property(name = "permissionChecker.target")
 })
 @Service(value = AuthorizationTest.class)
-@TestDuringDevelopment
 public class AuthorizationTest {
 
     @Reference(bind = "setPermissionChecker")
@@ -62,19 +60,11 @@ public class AuthorizationTest {
 
         Assert.assertTrue(permissionChecker.hasPermission(0, 0));
 
-        try {
-            permissionChecker.getSystemResourceId();
-            Assert.fail();
-        } catch (UnsupportedOperationException e) {
-            Assert.assertNull(e.getMessage());
-        }
+        Assert.assertEquals(-1, permissionChecker.getSystemResourceId());
 
-        try {
-            permissionChecker.getAuthorizationScope(0);
-            Assert.fail();
-        } catch (UnsupportedOperationException e) {
-            Assert.assertNull(e.getMessage());
-        }
+        long[] authorizationScope = permissionChecker.getAuthorizationScope(0);
+        Assert.assertEquals(1, authorizationScope.length);
+        Assert.assertEquals(-1, authorizationScope[0]);
     }
 
 }

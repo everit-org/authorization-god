@@ -27,16 +27,16 @@ import org.osgi.framework.ServiceRegistration;
 
 public class AuthorizationGodActivator implements BundleActivator {
 
-    private static final String PROP_AUTHORIZATION = "authorization.name";
+    private static final String PROP_AUTHORIZATION_IMPL = "authorization.impl";
 
-    private static final String DEFAULT_AUTHORIZATION = "god";
+    private static final String DEFAULT_AUTHORIZATION_IMPL = "god";
 
     private ServiceRegistration<?> godSR;
 
     @Override
     public void start(final BundleContext bundleContext) throws Exception {
         Dictionary<String, String> properties = new Hashtable<String, String>();
-        properties.put(PROP_AUTHORIZATION, DEFAULT_AUTHORIZATION);
+        properties.put(PROP_AUTHORIZATION_IMPL, DEFAULT_AUTHORIZATION_IMPL);
         godSR = bundleContext.registerService(
                 new String[] { PermissionChecker.class.getName(), AuthorizationQdslUtil.class.getName() },
                 new AuthorizationGod(),

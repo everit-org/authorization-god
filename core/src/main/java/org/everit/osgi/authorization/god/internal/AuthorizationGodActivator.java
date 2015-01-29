@@ -20,7 +20,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 import org.everit.osgi.authorization.PermissionChecker;
-import org.everit.osgi.authorization.ri.schema.qdsl.util.AuthorizationQdslUtil;
+import org.everit.osgi.authorization.qdsl.util.AuthorizationQdslUtil;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;

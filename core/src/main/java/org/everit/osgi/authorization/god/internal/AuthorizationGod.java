@@ -17,7 +17,7 @@
 package org.everit.osgi.authorization.god.internal;
 
 import org.everit.osgi.authorization.PermissionChecker;
-import org.everit.osgi.authorization.ri.schema.qdsl.util.AuthorizationQdslUtil;
+import org.everit.osgi.authorization.qdsl.util.AuthorizationQdslUtil;
 
 import com.mysema.query.types.Expression;
 import com.mysema.query.types.expr.BooleanExpression;

@@ -23,7 +23,7 @@ import org.apache.felix.scr.annotations.Property;
 import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.Service;
 import org.everit.osgi.authorization.PermissionChecker;
-import org.everit.osgi.authorization.ri.schema.qdsl.util.AuthorizationQdslUtil;
+import org.everit.osgi.authorization.qdsl.util.AuthorizationQdslUtil;
 import org.everit.osgi.dev.testrunner.TestRunnerConstants;
 import org.junit.Assert;
 import org.junit.Test;

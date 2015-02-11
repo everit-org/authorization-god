@@ -84,9 +84,30 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
+            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
             <Bundle-Activator>org.everit.osgi.authorization.god.internal.AuthorizationGodActivator</Bundle-Activator>
+            <Import-Package>
+              org.everit.osgi.authorization;version="[1.0,2)",
+              *
+            </Import-Package>
+            <Export-Package>
+              org.everit.osgi.authorization.god;version=1.0.0
+            </Export-Package>
           </instructions>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>net.distilledcode.maven</groupId>
+        <artifactId>baselining-maven-plugin</artifactId>
+        <version>1.0.4</version>
+        <executions>
+          <execution>
+            <id>baseline</id>
+            <goals>
+              <goal>baseline</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>

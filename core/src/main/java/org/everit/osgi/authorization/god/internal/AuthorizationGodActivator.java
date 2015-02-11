@@ -19,26 +19,26 @@ package org.everit.osgi.authorization.god.internal;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
-import org.everit.osgi.authorization.PermissionChecker;
-import org.everit.osgi.authorization.qdsl.util.AuthorizationQdslUtil;
+import org.everit.osgi.authorization.god.AuthorizationGodConstants;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceRegistration;
 
 public class AuthorizationGodActivator implements BundleActivator {
-
-    private static final String PROP_AUTHORIZATION_IMPL = "authorization.impl";
-
-    private static final String DEFAULT_AUTHORIZATION_IMPL = "god";
 
     private ServiceRegistration<?> godSR;
 
     @Override
     public void start(final BundleContext bundleContext) throws Exception {
         Dictionary<String, String> properties = new Hashtable<String, String>();
-        properties.put(PROP_AUTHORIZATION_IMPL, DEFAULT_AUTHORIZATION_IMPL);
+        properties.put(Constants.SERVICE_DESCRIPTION, AuthorizationGodConstants.GOD_SERVICE_DESCRIPTION);
+        properties.put(AuthorizationGodConstants.PROP_AUTHORIZATION_IMPL,
+                AuthorizationGodConstants.GOD_AUTHORIZATION_IMPL);
         godSR = bundleContext.registerService(
-                new String[] { PermissionChecker.class.getName(), AuthorizationQdslUtil.class.getName() },
+                new String[] {
+                        AuthorizationGodConstants.OBJECT_CLASS_PERMISSION_CHECKER,
+                        AuthorizationGodConstants.OBJECT_CLASS_AUTHORIZATION_QDSL_UTIL },
                 new AuthorizationGod(),
                 properties);
     }

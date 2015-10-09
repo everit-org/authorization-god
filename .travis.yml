@@ -1,5 +1,5 @@
 language: java
 jdk:
-  - oraclejdk8
-script: mvn integration-test
+  - oraclejdk6
+script: mvn install
 install: true

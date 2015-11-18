@@ -18,9 +18,9 @@ package org.everit.authorization.god;
 import org.everit.authorization.PermissionChecker;
 import org.everit.authorization.qdsl.util.AuthorizationQdslUtil;
 
-import com.mysema.query.types.Expression;
-import com.mysema.query.types.expr.BooleanExpression;
-import com.mysema.query.types.template.BooleanTemplate;
+import com.querydsl.core.types.Expression;
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.Expressions;
 
 /**
  * The "GOD" implementation of the {@link PermissionChecker} and {@link AuthorizationQdslUtil}
@@ -33,7 +33,7 @@ public class AuthorizationGod implements PermissionChecker, AuthorizationQdslUti
   @Override
   public BooleanExpression authorizationPredicate(final long authorizedResourceId,
       final Expression<Long> targetResourceId, final String... actions) {
-    return BooleanTemplate.TRUE;
+    return Expressions.TRUE;
   }
 
   @Override
